@@ -12,12 +12,12 @@ using ProConsulta.Repositories.Pacientes;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add MudBlazor services
-builder.Services.AddMudServices();
-
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Add MudBlazor services
+builder.Services.AddMudServices();
 
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();

@@ -16,18 +16,18 @@ namespace ProConsulta.Components.Pages.Agendamentos
         private IMedicoRepository MedicoRepository { get; set; } = null!;
         [Inject]
         private IPacienteRepository PacienteRepository { get; set; } = null!;
-
-        [Inject]
-        private NavigationManager NavigationManager { get; set; } = null!;
         [Inject]
         private ISnackbar Snackbar { get; set; } = null!;
 
         [Inject]
-        public AgendamentoInputModel InputModel { get; set; } = new AgendamentoInputModel();
+        private NavigationManager NavigationManager { get; set; } = null!;
+        
+       public AgendamentoInputModel InputModel { get; set; } = new();
 
-        public List<Medico> Medicos { get; set; } = new List<Medico>();
-        public List<Paciente> Pacientes { get; set; } = new List<Paciente>();
-        public TimeSpan? time { get; set; } = new TimeSpan(09, 00, 00);
+        public List<Medico> Medicos { get; set; } = new();
+        public List<Paciente> Pacientes { get; set; } = new();
+
+        public TimeSpan? time = new TimeSpan(09, 00, 00);
         public DateTime? date { get; set; } = DateTime.Now.Date;
         public DateTime? MinDate { get; set; } = DateTime.Now.Date;
 
@@ -62,8 +62,5 @@ namespace ProConsulta.Components.Pages.Agendamentos
             Medicos = await MedicoRepository.GetAllAsync();
             Pacientes = await PacienteRepository.GetAllAsync();
         }
-
-
-
     }
 }

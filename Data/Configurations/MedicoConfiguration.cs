@@ -32,7 +32,7 @@ namespace ProConsulta.Data.Configurations
                 .IsRequired(true);
 
             builder.HasIndex(x => x.Documento)
-                .IsUnique(true);
+                .IsUnique();
 
             builder.HasMany(x => x.Agendamentos)
                 .WithOne(x => x.Medico)

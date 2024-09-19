@@ -29,7 +29,7 @@ namespace ProConsulta.Data.Configurations
                 .HasColumnType("VARCHAR(11)");
 
             builder.HasIndex(p => p.Documento)
-                .IsUnique(true);
+                .IsUnique();
 
             builder.HasMany(p => p.Agendamentos)
                 .WithOne(a => a.Paciente)

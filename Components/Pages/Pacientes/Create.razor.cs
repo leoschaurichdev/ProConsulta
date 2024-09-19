@@ -18,7 +18,7 @@ namespace ProConsulta.Components.Pages.Pacientes
         [Inject]
         public ISnackbar Snackbar { get; set; } = null!;
 
-        public PacienteInputModel InputModel { get; set; } = new PacienteInputModel();
+        public PacienteInputModel InputModel { get; set; } = new ();
 
         public DateTime? DataNascimento { get; set; } = DateTime.Today;
         public DateTime? MaxDate { get; set; } = DateTime.Today;

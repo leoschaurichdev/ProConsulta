@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Authorization
 @inherits CreateAgendamentoPage
 
-@attribute [Authorize(Roles = "atendente")]
+@attribute [Authorize(Roles = "Atendente")]
 
 <PageTitle>Agendamentos</PageTitle>
 
@@ -29,13 +29,13 @@
 
             {
 
-                <MudSelectItem Value="@paciente.Id">"@paciente.Nome"</MudSelectItem>
+                <MudSelectItem Value="@paciente.Id">@paciente.Nome</MudSelectItem>
 
             }
 
         </MudSelect>
 
-        <MudSelect Label="Medicos"
+        <MudSelect Label="Médicos"
                    @bind-Value="InputModel.MedicoId"
                    Variant="Variant.Outlined"
                    AnchorOrigin="Origin.BottomCenter"
@@ -45,7 +45,7 @@
 
             {
 
-                <MudSelectItem Value="@medico.Id">"@medico.Nome" </MudSelectItem>
+                <MudSelectItem Value="@medico.Id">@medico.Nome</MudSelectItem>
 
             }
 

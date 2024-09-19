@@ -16,11 +16,13 @@ namespace ProConsulta.Data.Configurations
                 .IsRequired(false)
                 .HasColumnType("VARCHAR(250)");
 
-            builder.Property(x => x.MedicoId)
-                .IsRequired(true);
-
             builder.Property(x => x.PacienteId)
-                .IsRequired(true);
+                .IsRequired();
+
+            builder.Property(x => x.MedicoId)
+                .IsRequired();
+
+
         }
     }
 }

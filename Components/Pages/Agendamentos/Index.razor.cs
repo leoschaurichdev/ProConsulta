@@ -19,10 +19,11 @@ namespace ProConsulta.Components.Pages.Agendamentos
 
         public List<Agendamento> Agendamentos { get; set; } = new();
 
-        public bool HideButtons { get; set; }
+        
 
         [CascadingParameter]
         private Task<AuthenticationState> AuthenticationState { get; set; }
+        public bool HideButtons { get; set; }
 
         public async Task DeleteAgendamento(Agendamento agendamento)
         {

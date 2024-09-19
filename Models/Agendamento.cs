@@ -6,11 +6,10 @@
         public TimeSpan HoraConsulta { get; set; }
         public DateTime DataConsulta { get; set; }
         public string? Observacao { get; set; }
-        public string Status { get; set; }
         public int MedicoId { get; set; }
         public int PacienteId { get; set; }
-        public Medico Medico { get; set; } = null!;
         public Paciente Paciente { get; set; } = null!;
-        public Especialidade Especialidade { get; set; } = null!;
+        public Medico Medico { get; set; } = null!;
+
     }
 }
