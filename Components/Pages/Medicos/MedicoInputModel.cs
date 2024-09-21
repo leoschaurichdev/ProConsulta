@@ -1,5 +1,4 @@
-﻿using ProConsulta.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProConsulta.Components.Pages.Medicos
 {
@@ -26,10 +25,5 @@ namespace ProConsulta.Components.Pages.Medicos
         [Required(ErrorMessage = "O campo {0} deve ser forncecido!")]
         [RegularExpression("([1-9][0-9]*)", ErrorMessage = "O valor selecionado é inválido!")]
         public int EspecialidadeId { get; set; }
-
-        public Especialidade Especialidade { get; set; } = null!;
-
-        public ICollection<Agendamento>? Agendamentos { get; set; }
-
     }
 }

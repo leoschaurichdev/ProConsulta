@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using MudBlazor;
+using ProConsulta.Data;
+using ProConsulta.Extensions;
 using ProConsulta.Models;
 using ProConsulta.Repositories.Especialidades;
 using ProConsulta.Repositories.Medicos;
-using ProConsulta.Components.Pages.Medicos;
-using ProConsulta.Extensions;
 
 namespace ProConsulta.Components.Pages.Medicos
 {
@@ -15,7 +15,7 @@ namespace ProConsulta.Components.Pages.Medicos
         private IEspecialidadeRepository EspecialidadeRepository { get; set; } = null!;
 
         [Inject]
-        private IMedicoRepository repository { get; set; } = null!;
+        public IMedicoRepository repository { get; set; } = default!;
 
         [Inject]
         public ISnackbar Snackbar { get; set; } = null!;
@@ -23,9 +23,8 @@ namespace ProConsulta.Components.Pages.Medicos
         [Inject]
         public NavigationManager NavigationManager { get; set; } = null!;
 
-        public List<Especialidade> Especialidades { get; set; } = new List<Especialidade>();
-
-        public MedicoInputModel InputModel { get; set; } = new MedicoInputModel();
+        public List<Especialidade> Especialidades { get; set; } = new();
+        public MedicoInputModel InputModel { get; set; } = new();
 
         public async Task OnValidSubmitAsync(EditContext editContext)
         {
@@ -42,9 +41,10 @@ namespace ProConsulta.Components.Pages.Medicos
                         EspecialidadeId = model.EspecialidadeId,
                         DataCadastro = model.DataCadastro
                     };
+
                     await repository.AddAsync(medico);
-                    Snackbar.Add($"Médico {medico.Nome} cadastrado com sucesso!", Severity.Success);
-                    NavigationManager.NavigateTo("/medicos");// Voltando para a tela de médicos
+                    Snackbar.Add("Médico cadastrado com sucesso!", Severity.Success);
+                    NavigationManager.NavigateTo("/medicos");
                 }
             }
             catch (Exception ex)

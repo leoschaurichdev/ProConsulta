@@ -14,19 +14,19 @@ namespace ProConsulta.Data.Configurations
 
             builder.Property(x => x.Nome)
                 .IsRequired(true)
-                .HasColumnType("VARCHAR(50)");
+                .HasColumnType("NVARCHAR(50)");
 
             builder.Property(x => x.Documento)
                 .IsRequired(true)
-                .HasColumnType("VARCHAR(11)");
+                .HasColumnType("NVARCHAR(11)");
 
             builder.Property(x => x.Crm)
                 .IsRequired(true)
-                .HasColumnType("VARCHAR(8)");
+                .HasColumnType("NVARCHAR(8)");
 
             builder.Property(x => x.Celular)
                 .IsRequired(true)
-                .HasColumnType("VARCHAR(11)");
+                .HasColumnType("NVARCHAR(11)");
 
             builder.Property(x => x.EspecialidadeId)
                 .IsRequired(true);
@@ -34,9 +34,9 @@ namespace ProConsulta.Data.Configurations
             builder.HasIndex(x => x.Documento)
                 .IsUnique();
 
-            builder.HasMany(x => x.Agendamentos)
-                .WithOne(x => x.Medico)
-                .HasForeignKey(x => x.MedicoId)
+            builder.HasMany(a => a.Agendamentos)
+                .WithOne(m => m.Medico)
+                .HasForeignKey(a => a.MedicoId)
                 .OnDelete(DeleteBehavior.Restrict);
 
         }

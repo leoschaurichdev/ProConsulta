@@ -2,8 +2,8 @@
 using ProConsulta.Data;
 using ProConsulta.Models;
 
-namespace ProConsulta.Repositories.Medicos
-{
+namespace ProConsulta.Repositories.Medicos;
+
     public class MedicoRepository : IMedicoRepository
     {
         private readonly ApplicationDbContext _context;
@@ -19,11 +19,32 @@ namespace ProConsulta.Repositories.Medicos
                 _context.Medicos.Add(medico);
                 await _context.SaveChangesAsync();
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
                _context.ChangeTracker.Clear();
+                throw;
             }
+            
+        }
+        public async Task UpdateAsync(Medico medico)
+        {
+            try
+            {
+                _context.Medicos.Update(medico);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                _context.ChangeTracker.Clear();
+                throw;
+            }
+
+        }
+
+        public async Task<Medico?> GetByIdAsync(int id)
+        {
+        return await _context.Medicos.SingleOrDefaultAsync(x => x.Id == id);
             
         }
 
@@ -42,27 +63,4 @@ namespace ProConsulta.Repositories.Medicos
                 .AsNoTracking()
                 .ToListAsync();
         }
-
-        public async Task<Medico?> GetByIdAsync(int id)
-        {
-           return await _context
-                .Medicos
-                .SingleOrDefaultAsync(p => p.Id == id);
-        }
-
-        public async Task UpdateAsync(Medico medico)
-        {
-            try
-            {
-                _context.Update(medico);
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-                _context.ChangeTracker.Clear();
-                throw;
-            }
-
-        }
     }
-}

@@ -10,32 +10,31 @@ namespace ProConsulta.Data.Configurations
         {
             builder.ToTable("Pacientes");
 
-            builder.HasKey(p => p.Id);
+            builder.HasKey(x => x.Id);
 
-            builder.Property(p => p.Nome)
+            builder.Property(x => x.Nome)
                 .IsRequired(true)
                 .HasColumnType("VARCHAR(50)");
 
-            builder.Property(p => p.Documento)
+            builder.Property(x => x.Documento)
                 .IsRequired(true)
-                .HasColumnType("VARCHAR(11)");
+                .HasColumnType("NVARCHAR(11)");
 
-            builder.Property(p => p.Email)
+            builder.Property(x => x.Email)
                 .IsRequired(true)
                 .HasColumnType("VARCHAR(50)");
 
-            builder.Property(p => p.Celular)
+            builder.Property(x => x.Celular)
                 .IsRequired(true)
-                .HasColumnType("VARCHAR(11)");
+                .HasColumnType("NVARCHAR(11)");
 
-            builder.HasIndex(p => p.Documento)
+            builder.HasIndex(x => x.Documento)
                 .IsUnique();
 
-            builder.HasMany(p => p.Agendamentos)
-                .WithOne(a => a.Paciente)
+            builder.HasMany(a => a.Agendamentos)
+                .WithOne(p => p.Paciente)
                 .HasForeignKey(a => a.PacienteId)
                 .OnDelete(DeleteBehavior.Restrict);
-
         }
     }
 }

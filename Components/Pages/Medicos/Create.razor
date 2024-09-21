@@ -1,12 +1,11 @@
 ﻿@page "/medicos/create"
 @using Microsoft.AspNetCore.Authorization
 @inherits CreateMedicoPage
-
-@attribute [Authorize(Roles ="Atendente")]
+@attribute [Authorize(Roles = "Atendente")]
 
 <PageTitle>Médicos</PageTitle>
 
-<MudText Typo="Typo.h4">Cadastro de Médicos</MudText>
+<MudText Typo="Typo.h3">Cadastro de Médicos</MudText>
 
 <MudPaper Class="pa-8 mt-4">
     <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
@@ -21,29 +20,31 @@
         <MudTextField Label="Documento"
                       Variant="Variant.Outlined"
                       HelperText="Campo obrigatório"
-                      @bind-Value="InputModel.Documento"
-                      Mask="@(new PatternMask("000.000.000-00"))"
-                      For="@(() => InputModel.Documento)" />
+                      @bind-Value="@InputModel.Documento"
+                      For="@(() => InputModel.Documento)"
+                      Mask="@(new PatternMask("000.000.000-00"))"/>
 
         <MudTextField Label="CRM"
                       Variant="Variant.Outlined"
                       HelperText="Campo obrigatório"
                       @bind-Value="InputModel.Crm"
-                      Mask="@(new PatternMask("aa-000000"))"
-                      For="@(() => InputModel.Crm)" />
+                      For="@(() => InputModel.Crm)"
+                      Mask="@(new PatternMask("aa-000000"))"/>
+                       
 
         <MudTextField Label="Celular"
                       Variant="Variant.Outlined"
                       HelperText = "Campo obrigatório"
                       @bind-Value="InputModel.Celular"
-                      Mask="@(new PatternMask("(00) 0 0000-0000"))"
-                      For = "@(() => InputModel.Celular)"/>
+                      For="@(() => InputModel.Celular)"
+                      Mask="@(new PatternMask("(00) 0 0000-0000"))"/>
+                      
 
         <MudSelect Label="Especialidade"
                    @bind-Value="InputModel.EspecialidadeId"
                    Variant="Variant.Outlined"
-                   AnchorOrigin="Origin.BottomCenter"
-                   For="@(()=>InputModel.EspecialidadeId)">
+                   For="@(()=>InputModel.EspecialidadeId)"
+                   AnchorOrigin="Origin.BottomCenter">
 
             @foreach (var especialidade in Especialidades)
             {
@@ -53,16 +54,11 @@
         </MudSelect>
 
         <MudDivider Class="m-4" />
-
         <MudButton Variant="Variant.Filled"
                    StartIcon="@Icons.Material.Filled.Save"
                    Color="Color.Info"
                    Size="Size.Large"
-                   ButtonType="ButtonType.Submit">
-
-            SALVAR
-        </MudButton>
+                   ButtonType="ButtonType.Submit">SALVAR</MudButton>
 
     </EditForm>
-
 </MudPaper>
