@@ -62,7 +62,7 @@ namespace ProConsulta.Components.Pages.Medicos;
             CurrentMedico = await repository.GetByIdAsync(MedicoId);
             Especialidades = await EspecialidadeRepository.GetAllAsync();
 
-            if (CurrentMedico is not null) 
+            if (CurrentMedico is null) 
                 return;
             
                 InputModel = new MedicoInputModel()

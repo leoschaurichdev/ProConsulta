@@ -17,12 +17,10 @@ namespace ProConsulta.Components.Pages.Pacientes
         public ISnackbar Snackbar { get; set; } = null!;
         [Inject]
         public NavigationManager NavigationManager { get; set; } = null!;
-
         public PacienteInputModel InputModel { get; set; } = new PacienteInputModel();
         private Paciente? CurrentPaciente { get; set; }
         public DateTime? DataNascimento { get; set; } = DateTime.Today;
         public DateTime? MaxDate { get; set; } = DateTime.Today;
-
         protected override async Task OnInitializedAsync()
         {
             CurrentPaciente = await repository.GetByIdAsync(PacienteId);
